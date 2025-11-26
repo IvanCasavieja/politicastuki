@@ -1,0 +1,479 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitud de borrado de cuenta | Tu Alimento Diario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1524;
+      --panel: rgba(255, 255, 255, 0.05);
+      --stroke: rgba(255, 255, 255, 0.12);
+      --text: #f4f7fb;
+      --muted: #c9d5e6;
+      --accent: #70f0c2;
+      --accent-2: #ffb98b;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.36);
+      --max-width: 1000px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(112,240,194,0.1), transparent 26%), radial-gradient(circle at 80% 0%, rgba(255,185,139,0.12), transparent 20%), var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .layout {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 22px 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--stroke);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    header.hero {
+      margin-top: 18px;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: linear-gradient(140deg, rgba(112, 240, 194, 0.15), rgba(255, 185, 139, 0.12));
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header.hero::after, header.hero::before {
+      content: "";
+      position: absolute;
+      filter: blur(90px);
+      opacity: 0.6;
+    }
+
+    header.hero::after {
+      width: 240px; height: 240px;
+      background: radial-gradient(circle at 30% 40%, rgba(112, 240, 194, 0.4), transparent 60%);
+      top: -60px; right: -30px;
+    }
+    header.hero::before {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle at 70% 70%, rgba(255, 185, 139, 0.35), transparent 65%);
+      bottom: -70px; left: -50px;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 5vw, 38px);
+      line-height: 1.15;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      align-items: center;
+    }
+
+    .chip {
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .btn {
+      border: 1px solid var(--stroke);
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(112, 240, 194, 0.55);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #7cf7cd, #ffb98b);
+      color: #0b1022;
+      border: none;
+    }
+
+    section {
+      margin-top: 26px;
+      scroll-margin-top: 120px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--stroke);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .muted { color: var(--muted); }
+
+    ul.tight {
+      padding-left: 18px;
+      margin: 0;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .step .bubble {
+      width: 46px; height: 46px;
+      border-radius: 16px;
+      background: rgba(112, 240, 194, 0.18);
+      border: 1px solid rgba(112, 240, 194, 0.5);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .code-block {
+      margin-top: 8px;
+      background: #0d192b;
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 14px;
+      font-family: "Space Grotesk", "Manrope", monospace;
+      color: var(--muted);
+      white-space: pre-wrap;
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    details {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+
+    .background-blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.35;
+      mix-blend-mode: screen;
+    }
+
+    .blob.one { width: 36vw; height: 36vw; background: rgba(112, 240, 194, 0.32); top: -6vw; right: -8vw; }
+    .blob.two { width: 32vw; height: 32vw; background: rgba(255, 185, 139, 0.4); bottom: -10vw; left: -6vw; }
+    .blob.three { width: 22vw; height: 22vw; background: rgba(135, 164, 255, 0.2); top: 45%; left: 45%; }
+
+    @media (max-width: 720px) {
+      header.hero { padding: 22px; }
+      .cta-row { flex-direction: column; align-items: flex-start; }
+      .layout { padding: 26px 18px 60px; }
+      .step { grid-template-columns: 1fr; }
+      .step .bubble { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-blobs" aria-hidden="true">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+  </div>
+
+  <div class="layout">
+    <a class="top-link" href="index.html">← Volver a la política de privacidad</a>
+
+    <header class="hero">
+      <p class="eyebrow">Gestión de datos</p>
+      <h1>Solicita el borrado de tu cuenta de Tu Alimento Diario</h1>
+      <p class="lead">Esta página te guía para contactar al correo oficial de privacidad y pedir que eliminemos tu cuenta y datos asociados de la app de lecturas bíblicas Tu Alimento Diario. El trámite se realiza por correo para confirmar que eres el titular.</p>
+      <div class="cta-row">
+        <a class="btn primary" id="mailtoBtn" href="mailto:dtualimento@gmail.com?subject=Solicitud%20de%20borrado%20de%20cuenta%20-%20Tu%20Alimento%20Diario&body=Hola%2C%20equipo%20de%20Tu%20Alimento%20Diario%3A%0D%0ASolicito%20el%20borrado%20de%20mi%20cuenta%20y%20datos.%0D%0AEl%20correo%20de%20mi%20cuenta%20es%3A%20%0D%0A%0D%0AConfirmo%20que%20soy%20el%20titular%20y%20acepto%20que%20se%20borren%20mis%20datos.%0D%0A%0D%0AGracias.">Enviar solicitud por correo</a>
+        <button class="btn" id="copyMail" type="button">Copiar correo de privacidad</button>
+        <span class="chip">Correo: dtualimento@gmail.com</span>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Lo que necesitas</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Datos mínimos</h3>
+          <ul class="tight">
+            <li>Correo con el que registraste tu cuenta.</li>
+            <li>Confirmación expresa de que deseas eliminar la cuenta.</li>
+            <li>Opcional: motivo o comentarios para ayudarnos a mejorar.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Identificación</h3>
+          <p class="muted">Debes escribir desde el mismo correo asociado a la cuenta. Si ya no tienes acceso, indícalo en el mensaje para que podamos validar tu identidad.</p>
+        </article>
+        <article class="card">
+          <h3>Tiempo estimado</h3>
+          <p class="muted">Atendemos las solicitudes en 24 a 72 horas hábiles. Te avisaremos cuando el borrado esté completado.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Pasos rápidos</span>
+      </div>
+      <div class="card">
+        <div class="timeline">
+          <div class="step">
+            <div class="bubble">1</div>
+            <div>
+              <strong>Abre tu correo</strong>
+              <p class="muted">Usa la misma dirección con la que creaste la cuenta.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="bubble">2</div>
+            <div>
+              <strong>Usa el botón o la plantilla</strong>
+              <p class="muted">Haz clic en “Enviar solicitud por correo” o copia la plantilla y pégala en tu mensaje.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="bubble">3</div>
+            <div>
+              <strong>Confirma y envía</strong>
+              <p class="muted">Revisa que el correo de la cuenta esté correcto. Nosotros confirmaremos por el mismo medio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Plantilla de solicitud</span>
+      </div>
+      <div class="card">
+        <div class="cta-row" style="margin-top:0;">
+          <button class="btn primary" id="copyTemplate" type="button">Copiar texto de ejemplo</button>
+          <span class="chip">Ajusta el correo y cualquier detalle</span>
+        </div>
+        <div class="code-block" id="templateText">
+Asunto: Solicitud de borrado de cuenta - Tu Alimento Diario
+
+Hola, equipo de Tu Alimento Diario:
+
+Solicito eliminar mi cuenta y todos los datos asociados.
+Correo de la cuenta: [escribe aquí tu correo]
+
+Confirmo que soy el titular de la cuenta y autorizo el borrado.
+
+Comentarios opcionales:
+[Escribe tus comentarios]
+
+Gracias.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Qué ocurre después</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Revisión</h3>
+          <p class="muted">Verificamos que la solicitud provenga del correo titular. Si necesitamos más datos para confirmar identidad, te lo pediremos.</p>
+        </article>
+        <article class="card">
+          <h3>Borrado seguro</h3>
+          <p class="muted">Eliminamos la cuenta y los datos que podemos suprimir legalmente (favoritos, notas, progreso, recordatorios). Si algo debe mantenerse por requisitos legales, te lo informaremos.</p>
+        </article>
+        <article class="card">
+          <h3>Confirmación</h3>
+          <p class="muted">Te enviaremos un correo de cierre cuando el proceso termine. Si desinstalaste la app, no es necesario reinstalarla.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Preguntas frecuentes</span>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>¿Puedo pausar o reactivar la cuenta en lugar de borrarla?</summary>
+          <p class="muted">Actualmente solo ofrecemos eliminación completa bajo solicitud. Si prefieres conservar tus datos, no envíes la solicitud y simplemente deja de usar la app.</p>
+        </details>
+        <details>
+          <summary>¿Qué datos se eliminan?</summary>
+          <p class="muted">Borramos tus favoritos, notas, progreso y ajustes asociados a la cuenta, salvo lo que debamos conservar por obligaciones legales (si aplica).</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa si no tengo acceso a mi correo?</summary>
+          <p class="muted">Indícalo en el mensaje y da un medio alterno de verificación. Podríamos pedirte más detalles para validar que eres la persona titular.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const mailBtn = document.getElementById("mailtoBtn");
+    const copyMail = document.getElementById("copyMail");
+    const copyTemplate = document.getElementById("copyTemplate");
+    const templateText = document.getElementById("templateText");
+
+    if (mailBtn) {
+      mailBtn.addEventListener("click", () => {
+        mailBtn.textContent = "Abriendo tu correo…";
+        setTimeout(() => { mailBtn.textContent = "Enviar solicitud por correo"; }, 1400);
+      });
+    }
+
+    if (copyMail) {
+      copyMail.addEventListener("click", async () => {
+        const email = "dtualimento@gmail.com";
+        try {
+          await navigator.clipboard.writeText(email);
+          copyMail.textContent = "Correo copiado";
+        } catch {
+          copyMail.textContent = email;
+        } finally {
+          setTimeout(() => { copyMail.textContent = "Copiar correo de privacidad"; }, 1600);
+        }
+      });
+    }
+
+    if (copyTemplate && templateText) {
+      copyTemplate.addEventListener("click", async () => {
+        const text = templateText.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          copyTemplate.textContent = "Plantilla copiada";
+        } catch {
+          copyTemplate.textContent = "No se pudo copiar, selecciona manualmente";
+        } finally {
+          setTimeout(() => { copyTemplate.textContent = "Copiar texto de ejemplo"; }, 1800);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
