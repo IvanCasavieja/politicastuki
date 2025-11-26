@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad | Alimento Diario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1524;
+      --panel: rgba(255, 255, 255, 0.04);
+      --stroke: rgba(255, 255, 255, 0.12);
+      --text: #f4f7fb;
+      --muted: #c9d5e6;
+      --accent: #70f0c2;
+      --accent-2: #ffb98b;
+      --danger: #ff6b6b;
+      --shadow: 0 15px 60px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --max-width: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", "Space Grotesk", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .layout {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 22px 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+      padding: 28px;
+      background: linear-gradient(145deg, rgba(255, 185, 139, 0.15), rgba(112, 240, 194, 0.12));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after, header::before {
+      content: "";
+      position: absolute;
+      filter: blur(80px);
+      opacity: 0.7;
+      transform: rotate(-8deg);
+    }
+
+    header::after {
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at 30% 30%, rgba(112, 240, 194, 0.5), transparent 60%);
+      top: -70px;
+      right: -10px;
+    }
+
+    header::before {
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle at 60% 60%, rgba(255, 185, 139, 0.55), transparent 65%);
+      bottom: -90px;
+      left: -40px;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.15;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .btn {
+      border: 1px solid var(--stroke);
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--panel);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #7cf7cd, #ffb98b);
+      color: #0c101a;
+      border: none;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    section {
+      margin-top: 26px;
+      scroll-margin-top: 120px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--stroke);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%);
+      pointer-events: none;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    ul.tight {
+      padding-left: 18px;
+      margin: 0;
+      color: var(--muted);
+      display: grid;
+      gap: 6px;
+    }
+
+    details {
+      background: var(--panel);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(112, 240, 194, 0.18);
+      color: var(--text);
+      border: 1px solid rgba(112, 240, 194, 0.35);
+    }
+
+    .data-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .data-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--stroke);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .data-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .list-rows {
+      display: grid;
+      gap: 8px;
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 26px;
+      padding: 18px;
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+    }
+
+    .floating-nav {
+      position: sticky;
+      top: 14px;
+      z-index: 12;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0 14px;
+      padding: 12px;
+      border-radius: 16px;
+      background: linear-gradient(120deg, rgba(112, 240, 194, 0.12), rgba(255, 185, 139, 0.12));
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-nav a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 9px 13px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .floating-nav a:hover {
+      border-color: rgba(112, 240, 194, 0.5);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+      transform: translateY(-1px);
+    }
+
+    .background-blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+    }
+
+    .blob.one { width: 38vw; height: 38vw; background: rgba(112, 240, 194, 0.35); top: -8vw; right: -6vw; }
+    .blob.two { width: 32vw; height: 32vw; background: rgba(255, 185, 139, 0.45); bottom: -10vw; left: -6vw; }
+    .blob.three { width: 26vw; height: 26vw; background: rgba(135, 164, 255, 0.25); top: 50%; left: 40%; }
+
+    @media (max-width: 720px) {
+      header { padding: 22px; }
+      .cta-row { flex-direction: column; align-items: flex-start; }
+      .floating-nav { position: static; }
+      .layout { padding: 26px 18px 52px; }
+      section { scroll-margin-top: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-blobs" aria-hidden="true">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+  </div>
+
+  <div class="layout">
+    <header>
+      <p class="eyebrow">Política de Privacidad</p>
+      <h1>Alimento Diario</h1>
+      <p class="lead">
+        Esta política explica cómo cuidamos tu información cuando usas la aplicación móvil Alimento Diario. No es un sitio web; se aplica exclusivamente a la app disponible en Google Play. Queremos que sepas qué datos usamos, para qué, y cómo ejercer tus derechos.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:dtualimento@gmail.com">Escríbenos</a>
+        <button class="btn" id="copyMail" type="button">Copiar correo de privacidad</button>
+        <span class="chip">Control para personas de 13 años en adelante</span>
+      </div>
+      <div class="chip-row">
+        <span class="chip">Sin venta de datos</span>
+        <span class="chip">Transparencia y control</span>
+        <span class="chip">Datos de salud tratados con cuidado</span>
+      </div>
+    </header>
+
+    <nav class="floating-nav">
+      <a href="#datos">Datos que tratamos</a>
+      <a href="#usos">Fines del uso</a>
+      <a href="#permisos">Permisos de tu dispositivo</a>
+      <a href="#derechos">Tus derechos</a>
+      <a href="#menores">Personas menores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section class="card-grid">
+      <article class="card">
+        <h3>Lo esencial</h3>
+        <ul class="tight">
+          <li>Tu registro de comidas y bienestar se guarda de forma segura; no vendemos datos.</li>
+          <li>Solo pedimos permisos (como cámara o notificaciones) si activas funciones que los necesitan.</li>
+          <li>Puedes solicitar acceso, corrección o eliminación escribiendo al correo de privacidad.</li>
+          <li>No dirigimos la app a menores de 13 años; si tienes entre 13 y 17 años, úsala con guía adulta.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>En pocas líneas</h3>
+        <ul class="tight">
+          <li>Recopilamos datos para mostrar tu historial, generar recordatorios y mejorar la experiencia.</li>
+          <li>Compartimos datos solo con proveedores que ayudan a operar la app (p. ej. analítica agregada); no compartimos para publicidad personalizada.</li>
+          <li>Retenemos tus datos solo mientras sea necesario para la finalidad original o la ley lo requiera.</li>
+          <li>Te avisaremos si hay cambios materiales en esta política y actualizaremos la fecha de vigencia.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="datos">
+      <div class="section-title">
+        <span class="pill">Datos que tratamos</span>
+      </div>
+      <p class="muted">Estas categorías pueden aplicarse según las funciones que uses. Si una función no está activada, no recopilamos esos datos.</p>
+      <div class="data-table">
+        <div class="data-item">
+          <strong>Identificación básica</strong>
+          <p class="muted">Nombre, correo y credenciales si creas o inicias sesión en una cuenta.</p>
+          <span class="badge">Finalidad: autenticación y soporte</span>
+        </div>
+        <div class="data-item">
+          <strong>Datos de la app</strong>
+          <p class="muted">Registros de comidas, porciones, hábitos, objetivos y notas que ingresas.</p>
+          <span class="badge">Finalidad: mostrar progreso y estadísticas</span>
+        </div>
+        <div class="data-item">
+          <strong>Contenido opcional</strong>
+          <p class="muted">Fotos de alimentos o etiquetas si eliges adjuntarlas para tu registro.</p>
+          <span class="badge">Finalidad: contexto visual de tus registros</span>
+        </div>
+        <div class="data-item">
+          <strong>Datos técnicos</strong>
+          <p class="muted">Modelo del dispositivo, sistema operativo, versión de la app, eventos de fallos y rendimiento.</p>
+          <span class="badge">Finalidad: seguridad y mejoras</span>
+        </div>
+        <div class="data-item">
+          <strong>Analítica de uso</strong>
+          <p class="muted">Interacciones agregadas (pantallas visitadas, frecuencia de uso) sin identificarte directamente.</p>
+          <span class="badge">Finalidad: entender qué funciones son útiles</span>
+        </div>
+        <div class="data-item">
+          <strong>Soporte</strong>
+          <p class="muted">Mensajes que nos envíes, adjuntos y metadatos necesarios para responder.</p>
+          <span class="badge">Finalidad: resolver incidencias y consultas</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="usos">
+      <div class="section-title">
+        <span class="pill">Cómo usamos tus datos</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Fines principales</h3>
+          <ul class="tight">
+            <li>Mostrar tu historial, tendencias y progreso relacionado con alimentación y bienestar.</li>
+            <li>Sincronizar tu información entre dispositivos si inicias sesión (cuando la función esté disponible).</li>
+            <li>Personalizar recordatorios y objetivos según tus preferencias configuradas.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Seguridad y calidad</h3>
+          <ul class="tight">
+            <li>Prevenir fraude o uso indebido y proteger la integridad de la app.</li>
+            <li>Corregir errores y mejorar rendimiento mediante métricas técnicas agregadas.</li>
+            <li>Crear informes estadísticos sin identificarte para entender el uso de las funciones.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Lo que no hacemos</h3>
+          <ul class="tight">
+            <li>No vendemos tu información personal.</li>
+            <li>No usamos tus datos de salud o alimentación para publicidad personalizada.</li>
+            <li>No accedemos a tu ubicación precisa ni rastreamos tu actividad fuera de la app.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="permisos">
+      <div class="section-title">
+        <span class="pill">Permisos de tu dispositivo</span>
+      </div>
+      <p class="muted">La app solo solicita permisos cuando una función los requiere y puedes desactivarlos en cualquier momento desde los ajustes del dispositivo.</p>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Cámara y fotos</h3>
+          <ul class="tight">
+            <li>Uso: Adjuntar fotos de tus comidas.</li>
+            <li>Opcional: Sí, solo si eliges agregar imágenes.</li>
+            <li>Control: Puedes revocar el permiso en los ajustes del sistema.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Notificaciones</h3>
+          <ul class="tight">
+            <li>Uso: Recordatorios de registro y tips.</li>
+            <li>Opcional: Sí, puedes activar o desactivar alertas.</li>
+            <li>Control: Gestiona tus preferencias desde la app o el sistema.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Almacenamiento</h3>
+          <ul class="tight">
+            <li>Uso: Guardar tus registros y adjuntos en el dispositivo.</li>
+            <li>Opcional: Requerido para almacenar contenido que eliges crear.</li>
+            <li>Control: Puedes borrar tus datos dentro de la app o desinstalando.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Con quién compartimos</span>
+      </div>
+      <div class="list-rows">
+        <div class="badge">Operación de la app</div>
+        <p class="muted">Proveedores que alojan la infraestructura y herramientas de analítica agregada para mejorar la app. Requerimos acuerdos de confidencialidad y medidas de seguridad.</p>
+        <div class="badge">Cumplimiento legal</div>
+        <p class="muted">Autoridades públicas cuando la ley lo exija y solo en la medida necesaria.</p>
+        <div class="badge">No vendemos datos</div>
+        <p class="muted">No vendemos ni compartimos tu información personal con terceros para sus propios fines de marketing.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <span class="pill">Retención y seguridad</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Tiempo de conservación</h3>
+          <ul class="tight">
+            <li>Guardamos tus datos mientras uses la app y sea necesario para las finalidades descritas.</li>
+            <li>Si solicitas eliminación, aplicamos un borrado seguro salvo que la ley exija conservar cierta información.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Medidas de seguridad</h3>
+          <ul class="tight">
+            <li>Cifrado en tránsito de la información que se envía entre la app y nuestros servicios.</li>
+            <li>Controles de acceso restringido y registros de actividad administrativa.</li>
+            <li>Revisión periódica de incidentes y parches de seguridad.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="derechos">
+      <div class="section-title">
+        <span class="pill">Tus derechos</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Acceder y corregir</h3>
+          <p class="muted">Puedes solicitar una copia de tus datos personales y pedir correcciones si algo es inexacto.</p>
+        </article>
+        <article class="card">
+          <h3>Eliminar y limitar</h3>
+          <p class="muted">Puedes pedir el borrado de tu información o limitar ciertos tratamientos cuando sea legalmente posible.</p>
+        </article>
+        <article class="card">
+          <h3>Portabilidad</h3>
+          <p class="muted">Puedes solicitar que te enviemos tus datos en un formato estructurado para moverlos a otro servicio, si aplica.</p>
+        </article>
+        <article class="card">
+          <h3>Retirar consentimientos</h3>
+          <p class="muted">Si una función depende de tu consentimiento (ej. notificaciones o fotos), puedes retirarlo en la app o en los ajustes del dispositivo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="menores">
+      <div class="section-title">
+        <span class="pill">Personas menores</span>
+      </div>
+      <div class="card">
+        <p class="muted">
+          Alimento Diario está dirigida a personas de 13 años en adelante. No recopilamos deliberadamente datos de menores de 13 años ni permitimos su uso. Si eres madre, padre o tutor y crees que una persona menor de 13 años nos proporcionó datos, contáctanos para eliminarlos. Si tienes entre 13 y 17 años, usa la app con la guía de un adulto responsable.
+        </p>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="section-title">
+        <span class="pill">Contacto y cambios</span>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Cómo contactarnos</h3>
+          <p class="muted">
+            Responsable: Equipo de Alimento Diario<br>
+            Correo: <a href="mailto:dtualimento@gmail.com" class="btn" style="margin-top:6px;">dtualimento@gmail.com</a>
+          </p>
+        </article>
+        <article class="card">
+          <h3>Actualizaciones de esta política</h3>
+          <p class="muted">
+            Podemos actualizar esta política para reflejar cambios legales o funcionales de la app. Publicaremos la fecha de la última actualización y, si es un cambio relevante, te avisaremos dentro de la app.
+          </p>
+          <div class="badge" id="lastUpdated">Última actualización: --</div>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer">
+      Esta política se aplica exclusivamente a la aplicación móvil Alimento Diario publicada en Google Play. No usamos esta página web para recopilar información personal; su único propósito es informar. Si tienes preguntas, contáctanos.
+    </div>
+  </div>
+
+  <script>
+    const lastUpdated = document.getElementById("lastUpdated");
+    const date = new Date();
+    const formatted = date.toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" });
+    if (lastUpdated) lastUpdated.textContent = `Última actualización: ${formatted}`;
+
+    const copyBtn = document.getElementById("copyMail");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const email = "dtualimento@gmail.com";
+        try {
+          await navigator.clipboard.writeText(email);
+          copyBtn.textContent = "Correo copiado";
+          setTimeout(() => { copyBtn.textContent = "Copiar correo de privacidad"; }, 1800);
+        } catch (err) {
+          copyBtn.textContent = "No se pudo copiar";
+          setTimeout(() => { copyBtn.textContent = "Copiar correo de privacidad"; }, 1800);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
