@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -298,7 +298,7 @@
   </div>
 
   <div class="layout">
-    <a class="top-link" href="index.html">← Volver a la política de privacidad</a>
+    <a class="top-link" href="index.html">&larr; Volver a la política de privacidad</a>
 
     <header class="hero">
       <p class="eyebrow">Gestión de datos</p>
@@ -352,7 +352,7 @@
             <div class="bubble">2</div>
             <div>
               <strong>Usa el botón o la plantilla</strong>
-              <p class="muted">Haz clic en “Enviar solicitud por correo” o copia la plantilla y pégala en tu mensaje.</p>
+              <p class="muted">Haz clic en "Enviar solicitud por correo" o copia la plantilla y pégala en tu mensaje.</p>
             </div>
           </div>
           <div class="step">
@@ -432,6 +432,12 @@ Gracias.
         </details>
       </div>
     </section>
+
+    <section>
+      <div class="card">
+        <p class="muted">¿Necesitas volver a revisar cómo cuidamos tus datos? Lee la <a href="index.html" class="btn" style="margin-top:6px;">política de privacidad</a>.</p>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -442,7 +448,7 @@ Gracias.
 
     if (mailBtn) {
       mailBtn.addEventListener("click", () => {
-        mailBtn.textContent = "Abriendo tu correo…";
+        mailBtn.textContent = "Abriendo tu correo...";
         setTimeout(() => { mailBtn.textContent = "Enviar solicitud por correo"; }, 1400);
       });
     }
